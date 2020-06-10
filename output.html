@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <title>Your Results</title>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        
+        <style>
+                body {
+                  margin: 10px;
+                  font-family: 'Raleway', sans-serif;
+                  border-radius: 4px;
+                  font-size: 16px;
+                  background-color: #f3ebd6;
+                  background-position: 10px 10px; 
+                  background-repeat: no-repeat;
+                  padding: 12px 20px 12px 20px;
+                  transition: width 0.4s ease-in-out;
+                }
+            
+                *{transition:all 0.3s ease-in-out;}
+            
+                .container{
+                  clear:both;
+                  overflow:auto;
+                }
+                
+                nav{float:right;}
+                
+                .logo img{float:left;}
+                
+                ul li{
+                  padding:15px;
+                  font-size:10px; font-family:raleway;
+                }
+                
+                ul li:hover{
+                  color:orange;
+                  
+                }
+                a {
+                    color: #000000;
+                    text-decoration: none;
+                }
+
+        
+        </style>
+
+
+
+    </head>
+
+    <body id="body"> 
+        <div class="container">
+          <div class="logo">
+            <img src="https://cdn.discordapp.com/attachments/671510029563592713/678462813253009408/LogoTuition.PNG" alt="" width="200"/>
+            </div>
+            <nav>
+            <ul>
+            <li><a style="text-decoration:none" href="index.html">Home</a></li>
+            <li><a style="text-decoration:none" href="quiz.html">Quiz</a></li>
+            <li><a style="text-decoration:none" href="grant.html">Grants/Scholarships</a></li>
+            </ul>
+            </nav>
+              </div>
+                <hr />
+              </div>
+
+        <h1>Here Are Your Results</h1>
+        <div id="piechart"></div>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript">
+
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+  var data = google.visualization.arrayToDataTable([
+  ['Total Money', 'Different Forms of Aid'],
+  ['Cost of Attendance', parseInt(sessionStorage.getItem("costAttendance"))],
+  ['Cost of Living', parseInt(sessionStorage.getItem("costLiving"))]
+]);
+
+
+  var options = {'title':'Your Finances', 'width':550, 'height':400};
+
+
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  chart.draw(data, options);
+}
+</script>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    console.log(sessionStorage.getItem("race"));
+    google.charts.load("current", {packages:['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ["Element", "Cost", { role: "style" } ],
+        ["Family Contribution", parseInt(sessionStorage.getItem("familyContributions")), "#b87333"],
+        ["Current Grants/Scholarships", parseInt(sessionStorage.getItem("grants")), "silver"],
+        ["Other", parseInt(sessionStorage.getItem("other")), "gold"]
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "External money sources",
+        width: 800,
+        height: 400,
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+      chart.draw(view, options);
+  }
+  </script>
+<div id="columnchart_values" style="width: 900px; height: 300px;"></div>
+
+<br>
+<br>
+<br>
+<br>
+<hr>
+<br>
+
+<header>Grants/Scholarships:</header>
+    </body>
+    <script src=output.js></script>
+
+
+    
+</html>
